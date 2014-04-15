@@ -1,0 +1,19 @@
+{
+  "name": "wai-test",
+  "version": "0.1.0",
+  "homepage": "https://github.com/nullobject/wai-test",
+  "authors": [
+    "Josh Bassett <josh.bassett@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "rxjs": "~2.2.20"
+  }
+}
