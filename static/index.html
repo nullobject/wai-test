@@ -1,25 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>WAI</title>
-  <script src="/assets/rx.lite.js"></script>
-</head>
-<body>
-  <div class="container"></div>
-
-<script>
-  var output = document.getElementsByClassName('container')[0];
-
-  var eventSource = new EventSource('/eschan');
-
-  var messages = Bacon.fromEventTarget(eventSource, 'message')
-    .map(function (e) { return parseInt(e.data); })
-    .map(function (value) { return new Date(value); });
-
-  messages.onValue(function (message) {
-    console.log('Message: ' + message);
-  });
-</script>
-
-</body>
+  <head>
+    <title>WAI</title>
+    <script src="build/build.js"></script>
+  </head>
+  <body>
+    <div class="container"></div>
+  </body>
 </html>

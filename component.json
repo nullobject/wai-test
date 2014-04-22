@@ -1,0 +1,7 @@
+{
+  "name": "wai-test",
+  "dependencies": {
+    "baconjs/bacon.js": "*"
+  },
+  "scripts": ["static/index.js"]
+}

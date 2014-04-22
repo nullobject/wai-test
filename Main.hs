@@ -14,10 +14,11 @@ import Data.Time.Clock.POSIX
 app :: Chan ServerEvent -> Application
 app chan request =
   case pathInfo request of
-    []                       -> return $ responseFile status200 [("Content-Type", "text/html")] "static/index.html" Nothing
-    ["eschan"]               -> eventSourceAppChan chan request
-    ["assets", "rx.lite.js"] -> return $ responseFile status200 [("Content-Type", "application/javascript")] "bower_components/bacon/dist/Bacon.min.js" Nothing
-    _                        -> error $ "unexpected pathInfo" ++ show (pathInfo request)
+    []                     -> return $ responseFile status200 [("Content-Type", "text/html")] "static/index.html" Nothing
+    ["eschan"]             -> eventSourceAppChan chan request
+    ["build", "build.js"]  -> return $ responseFile status200 [("Content-Type", "application/javascript")] "build/build.js" Nothing
+    ["build", "build.css"] -> return $ responseFile status200 [("Content-Type", "application/javascript")] "build/build.css" Nothing
+    _                      -> error $ "unexpected pathInfo" ++ show (pathInfo request)
 
 eventChan :: Chan ServerEvent -> IO ()
 eventChan chan = forever $ do
