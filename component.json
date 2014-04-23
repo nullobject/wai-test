@@ -3,5 +3,6 @@
   "dependencies": {
     "baconjs/bacon.js": "*"
   },
-  "scripts": ["static/index.js"]
+  "scripts": ["static/index.js"],
+  "styles": ["static/index.css"]
 }

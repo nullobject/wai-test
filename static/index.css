@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: -webkit-radial-gradient(circle, hsla(180, 20%, 20%, 0.75), hsla(0, 0%, 0%, 1.0)), url("/assets/background.png");
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dialog {
+  align-self: center;
+  padding: 3em 1.5em;
+  box-shadow: 0 5px 10px hsla(0, 0%, 10%, 0.7);
+  background-color: hsla(0, 0%, 100%, 0.95);
+  min-width: 20em;
+  text-align: center;
+}
