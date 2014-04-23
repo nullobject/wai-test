@@ -4,12 +4,10 @@
 
 html, body {
   height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  background-image: -webkit-radial-gradient(circle, hsla(180, 20%, 20%, 0.75), hsla(0, 0%, 0%, 1.0)), url("/assets/background.png");
+  background: -webkit-radial-gradient(circle, hsla(180, 20%, 20%, 0.75), hsla(0, 0%, 0%, 1.0)), url("/assets/background.png");
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 

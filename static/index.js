@@ -1,6 +1,7 @@
 var Bacon = require('bacon.js');
+var dom = require('dom');
 
-var output = document.getElementsByClassName('container')[0];
+var output = dom('.container p');
 
 var eventSource = new EventSource('/eschan');
 
@@ -9,5 +10,5 @@ var messages = Bacon.fromEventTarget(eventSource, 'message')
   .map(function (value) { return new Date(value); });
 
 messages.onValue(function (message) {
-  console.log('Message: ' + message);
+  output.text(message);
 });

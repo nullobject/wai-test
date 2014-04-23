@@ -1,7 +1,9 @@
 {
   "name": "wai-test",
   "dependencies": {
-    "baconjs/bacon.js": "*"
+    "baconjs/bacon.js": "*",
+    "component/dom": "*",
+    "necolas/normalize.css": "*"
   },
   "scripts": ["static/index.js"],
   "styles": ["static/index.css"]
