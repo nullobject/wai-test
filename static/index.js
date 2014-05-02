@@ -1,4 +1,4 @@
-var Bacon = require('bacon.js');
+var Bacon = require('bacon');
 var dom = require('dom');
 
 var output = dom('.container p');
@@ -11,3 +11,5 @@ var messages = Bacon.fromEventTarget(eventSource, 'message')
 messages.onValue(function (message) {
   output.text(message);
 });
+
+module.exports = {}

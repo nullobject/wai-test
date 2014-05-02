@@ -6,5 +6,6 @@
     "necolas/normalize.css": "*"
   },
   "scripts": ["static/index.js"],
-  "styles": ["static/index.css"]
+  "styles": ["static/index.css"],
+  "main": "static/index.js"
 }

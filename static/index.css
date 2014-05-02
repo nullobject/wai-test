@@ -13,12 +13,12 @@ body {
 
 .container {
   height: 100%;
-  display: flex;
-  justify-content: center;
+  display: -webkit-flex;
+  -webkit-justify-content: center;
 }
 
 .dialog {
-  align-self: center;
+  -webkit-align-self: center;
   padding: 3em 1.5em;
   box-shadow: 0 5px 10px hsla(0, 0%, 10%, 0.7);
   background-color: hsla(0, 0%, 100%, 0.95);
