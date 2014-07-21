@@ -12,14 +12,14 @@ import Blaze.ByteString.Builder.Char.Utf8 (fromString)
 import Data.Time.Clock.POSIX
 
 app :: Chan ServerEvent -> Application
-app chan request respond =
+app chan request sendResponse =
   case rawPathInfo request of
-    "/"                      -> respond $ responseFile status200 [("Content-Type", "text/html")] "static/index.html" Nothing
-    "/assets/background.png" -> respond $ responseFile status200 [("Content-Type", "image/png")] "static/background.png" Nothing
-    "/build/build.css"       -> respond $ responseFile status200 [("Content-Type", "text/css")] "build/build.css" Nothing
-    "/build/build.js"        -> respond $ responseFile status200 [("Content-Type", "application/javascript")] "build/build.js" Nothing
-    "/eschan"                -> eventSourceAppChan chan request respond
-    _                        -> respond $ notFound
+    "/"                      -> sendResponse $ responseFile status200 [("Content-Type", "text/html")] "static/index.html" Nothing
+    "/assets/background.png" -> sendResponse $ responseFile status200 [("Content-Type", "image/png")] "static/background.png" Nothing
+    "/build/build.css"       -> sendResponse $ responseFile status200 [("Content-Type", "text/css")] "build/build.css" Nothing
+    "/build/build.js"        -> sendResponse $ responseFile status200 [("Content-Type", "application/javascript")] "build/build.js" Nothing
+    "/eschan"                -> eventSourceAppChan chan request sendResponse
+    _                        -> sendResponse $ notFound
 
 notFound :: Response
 notFound = responseLBS status404 [("Content-Type", "text/plain")] "404 - Not Found"
