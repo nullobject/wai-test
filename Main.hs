@@ -13,13 +13,16 @@ import Data.Time.Clock.POSIX
 
 app :: Chan ServerEvent -> Application
 app chan request respond =
-  case pathInfo request of
-    []                           -> respond $ responseFile status200 [("Content-Type", "text/html")] "static/index.html" Nothing
-    ["assets", "background.png"] -> respond $ responseFile status200 [("Content-Type", "image/png")] "static/background.png" Nothing
-    ["build", "build.css"]       -> respond $ responseFile status200 [("Content-Type", "text/css")] "build/build.css" Nothing
-    ["build", "build.js"]        -> respond $ responseFile status200 [("Content-Type", "application/javascript")] "build/build.js" Nothing
-    ["eschan"]                   -> eventSourceAppChan chan request respond
-    _                            -> error $ "unexpected pathInfo" ++ show (pathInfo request)
+  case rawPathInfo request of
+    "/"                      -> respond $ responseFile status200 [("Content-Type", "text/html")] "static/index.html" Nothing
+    "/assets/background.png" -> respond $ responseFile status200 [("Content-Type", "image/png")] "static/background.png" Nothing
+    "/build/build.css"       -> respond $ responseFile status200 [("Content-Type", "text/css")] "build/build.css" Nothing
+    "/build/build.js"        -> respond $ responseFile status200 [("Content-Type", "application/javascript")] "build/build.js" Nothing
+    "/eschan"                -> eventSourceAppChan chan request respond
+    _                        -> respond $ notFound
+
+notFound :: Response
+notFound = responseLBS status404 [("Content-Type", "text/plain")] "404 - Not Found"
 
 eventChan :: Chan ServerEvent -> IO ()
 eventChan chan = forever $ do
