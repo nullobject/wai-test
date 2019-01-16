@@ -7,5 +7,5 @@ const s = Signal
   .map(a => new Date(parseInt(a.data)))
 
 s.subscribe(a => {
-  document.getElementById('results').textContent = a
+  document.getElementById('results').textContent = a.toUTCString()
 })

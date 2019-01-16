@@ -7,21 +7,22 @@ html, body {
 }
 
 body {
-  background: -webkit-radial-gradient(circle, hsla(180, 20%, 20%, 0.75), hsla(0, 0%, 0%, 1.0)), url("./background.png");
+  background: radial-gradient(circle, hsla(180, 20%, 20%, 0.75), hsla(0, 0%, 0%, 1.0)), url("./background.png");
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .container {
+  align-items: center;
+  display: flex;
   height: 100%;
-  display: -webkit-flex;
-  -webkit-justify-content: center;
+  justify-content: center;
 }
 
-.dialog {
-  -webkit-align-self: center;
-  padding: 3em 1.5em;
-  box-shadow: 0 5px 10px hsla(0, 0%, 10%, 0.7);
+.modal {
   background-color: hsla(0, 0%, 100%, 0.95);
-  min-width: 20em;
+  border: 2px solid #ccc;
+  box-shadow: 0 5px 10px hsla(0, 0%, 10%, 0.7);
+  min-width: 20rem;
+  padding: 3rem 1.5rem;
   text-align: center;
 }
