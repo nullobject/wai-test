@@ -1,15 +1,11 @@
-var Bacon = require('bacon');
-var dom = require('dom');
+import { Signal } from 'bulb'
 
-var output = dom('.container p');
+const eventSource = new EventSource('/eschan')
 
-var eventSource = new EventSource('/eschan');
+const s = Signal
+  .fromEvent('message', eventSource)
+  .map(a => new Date(parseInt(a.data)))
 
-var messages = Bacon.fromEventTarget(eventSource, 'message')
-  .map(function (e) { return new Date(parseInt(e.data)); });
-
-messages.onValue(function (message) {
-  output.text(message);
-});
-
-module.exports = {}
+s.subscribe(a => {
+  document.getElementById('results').textContent = a
+})

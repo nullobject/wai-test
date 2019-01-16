@@ -1,0 +1,10 @@
+{
+  "name": "wai-test",
+  "private": true,
+  "devDependencies": {
+    "parcel-bundler": "^1.11.0"
+  },
+  "dependencies": {
+    "bulb": "^2.1.0"
+  }
+}

@@ -1,13 +1,14 @@
-build: clean components
-	@component build
+.PHONY: build clean start watch
 
-components: component.json
-	@component install
+build:
+	@stack build
+	@npx parcel build static/index.html
+
+start: build
+	@stack run
+
+watch:
+	@npx parcel watch static/index.html
 
 clean:
-	rm -rf build components
-
-server: build
-	@cabal run
-
-.PHONY: clean
+	@rm -rf dist

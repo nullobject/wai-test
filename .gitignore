@@ -1,6 +1,4 @@
-.cabal-sandbox
-cabal.sandbox.config
-build
-components
+.cache
+.stack-work
 dist
 node_modules
