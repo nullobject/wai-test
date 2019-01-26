@@ -1,6 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
 
--- import Blaze.ByteString.Builder.Char.Utf8 (fromString)
 import Control.Concurrent (forkIO, threadDelay)
 import Control.Concurrent.Chan (Chan, newChan, writeChan)
 import Control.Monad (forever)
