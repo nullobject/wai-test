@@ -2,3 +2,4 @@
 .stack-work
 dist
 node_modules
+stack.yaml.lock

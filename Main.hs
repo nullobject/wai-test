@@ -32,5 +32,5 @@ main :: IO ()
 main = do
   chan <- newChan
   _ <- forkIO . eventChan $ chan
-  putStrLn $ "http://localhost:8080/"
+  putStrLn "http://localhost:8080/"
   run 8080 (gzip def $ staticPolicy (addBase "dist") $ app chan)
