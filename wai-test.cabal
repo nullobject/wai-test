@@ -56,9 +56,9 @@ executable wai-test
                      , http-types == 0.12.3
                      , time
                      , wai >= 3.0 && < 3.3
-                     , wai-extra == 3.0.29.1
+                     , wai-extra == 3.1.13.0
                      , wai-middleware-static >= 0.8 && < 1
-                     , warp == 3.3.9
+                     , warp == 3.3.25
 
   -- Directories containing source files.
   -- hs-source-dirs:
