@@ -17,7 +17,7 @@ app chan request sendResponse =
   case rawPathInfo request of
     "/" -> sendResponse $ responseFile status200 [("Content-Type", "text/html")] "dist/index.html" Nothing
     "/eschan" -> eventSourceAppChan chan request sendResponse
-    _         -> sendResponse $ notFound
+    _         -> sendResponse notFound
 
 notFound :: Response
 notFound = responseLBS status404 [("Content-Type", "text/plain")] "404 - Not Found"
