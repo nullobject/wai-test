@@ -1,5 +1,6 @@
 .cache
 .stack-work
 dist
+dist-newstyle
 node_modules
 stack.yaml.lock
