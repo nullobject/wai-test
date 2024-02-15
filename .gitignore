@@ -1,5 +1,6 @@
 .cache
 .stack-work
+.parcel-cache
 dist
 dist-newstyle
 node_modules
