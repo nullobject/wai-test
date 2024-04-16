@@ -53,12 +53,12 @@ executable wai-test
   -- Other library packages from which modules are imported.
   build-depends:       base >= 4.7 && < 5
                      , bytestring >= 0.10.4
-                     , http-types == 0.12.3
+                     , http-types == 0.12.4
                      , time
                      , wai >= 3.0 && < 3.3
-                     , wai-extra == 3.1.13.0
+                     , wai-extra == 3.1.14
                      , wai-middleware-static >= 0.8 && < 1
-                     , warp == 3.3.25
+                     , warp == 3.3.31
 
   -- Directories containing source files.
   -- hs-source-dirs:
