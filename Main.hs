@@ -6,18 +6,26 @@ import Control.Monad (forever)
 import Data.ByteString.Builder (string8)
 import Data.Time.Clock.POSIX (getPOSIXTime)
 import Network.HTTP.Types (status200, status404)
-import Network.Wai (Application, Response, responseFile, responseLBS, rawPathInfo)
-import Network.Wai.EventSource (ServerEvent(..), eventSourceAppChan)
+import Network.Wai
+  ( Application
+  , Response
+  , rawPathInfo
+  , responseFile
+  , responseLBS
+  )
+import Network.Wai.EventSource (ServerEvent (..), eventSourceAppChan)
 import Network.Wai.Handler.Warp (run)
-import Network.Wai.Middleware.Gzip (gzip, def)
+import Network.Wai.Middleware.Gzip (def, gzip)
 import Network.Wai.Middleware.Static (addBase, staticPolicy)
 
 app :: Chan ServerEvent -> Application
 app chan request sendResponse =
   case rawPathInfo request of
-    "/" -> sendResponse $ responseFile status200 [("Content-Type", "text/html")] "dist/index.html" Nothing
+    "/" ->
+      sendResponse $
+        responseFile status200 [("Content-Type", "text/html")] "dist/index.html" Nothing
     "/eschan" -> eventSourceAppChan chan request sendResponse
-    _         -> sendResponse notFound
+    _ -> sendResponse notFound
 
 notFound :: Response
 notFound = responseLBS status404 [("Content-Type", "text/plain")] "404 - Not Found"
@@ -25,7 +33,7 @@ notFound = responseLBS status404 [("Content-Type", "text/plain")] "404 - Not Fou
 eventChan :: Chan ServerEvent -> IO ()
 eventChan chan = forever $ do
   threadDelay 1000000
-  time <- round `fmap` (* 1000) `fmap` getPOSIXTime
+  time <- round . (* 1000) <$> getPOSIXTime
   writeChan chan (ServerEvent Nothing Nothing [string8 . show $ time])
 
 main :: IO ()
